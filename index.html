@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>WebRTC:demo</title>
+	<meta charset='utf-8'>
+	<link rel="stylesheet" href="main.css" type="text/css" media="all">
+	<script src="photo.js"></script>
+</head>
+<body>
+	<div id="header">
+		<p>
+			신분증을 박스에 맞춰 찍어주세요.
+		</p>
+	</div>
+	<div class="contentarea">
+		<div class="camera">
+			<input type="range" hidden />
+			<video id="video" autoplay playsinline></video>
+			<div id="guideline"></div>
+		  	<button id="startbutton">Take photo</button>
+		</div>
+		<canvas id="canvas"> </canvas>
+	  </div>
+</body>
+</html>
