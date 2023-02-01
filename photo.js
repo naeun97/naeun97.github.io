@@ -131,7 +131,7 @@
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		const data = canvas.toDataURL("image/jpeg",1.0)
+		const data = canvas.toDataURL("image/png",0.5)//퀄리티를 조절하는 부분
 		downloadImage(data);
 	}
 
@@ -148,7 +148,7 @@
 	  +today.getMinutes().toString()
 	  +today.getSeconds().toString()
 	  +today.getMilliseconds().toString()
-	  +'.jpg';
+	  +'.png';
   
 	  a.href = data;
 	  a.download = filename;
