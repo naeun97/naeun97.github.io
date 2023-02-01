@@ -131,7 +131,7 @@
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		const data = canvas.toDataURL("image/png",0.5)//퀄리티를 조절하는 부분
+		const data = canvas.toDataURL("image/png",1)//퀄리티를 조절하는 부분
 		downloadImage(data);
 	}
 
