@@ -23,7 +23,6 @@
 	video = document.getElementById("video");
 	canvas = document.getElementById("canvas");
 	startbutton = document.getElementById("startbutton");
-	var selectoption=document.getElementById("type-option").options[document.getElementById("type-option").selectedIndex].value
 
 	// 와이드 렌즈 사용을 막는 코드
 	var cid = 0;
@@ -115,7 +114,7 @@
 		"click",
 		(ev) => {
 			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
-				takepicture(selectoption);
+				takepicture();
 		  		ev.preventDefault();
 			}
 			else{
@@ -127,7 +126,9 @@
 	}
 
 	// 캔버스 이미지로 변경
-	function takepicture(selectoption) {
+	function takepicture() {
+		var selectoption=document.getElementById("type-option")
+		.options[document.getElementById("type-option").selectedIndex].value
 		const data=null;
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
@@ -139,11 +140,11 @@
 		else{
 			data = canvas.toDataURL("image/png",1);
 		}
-		downloadImage(data);
+		downloadImage(data,selectoption);
 	}
 
   	//이미지 다운
-  	function downloadImage(data) {
+  	function downloadImage(data,selectoption) {
 	  var a = document.createElement('a');
 	  let today = new Date()
 	  
