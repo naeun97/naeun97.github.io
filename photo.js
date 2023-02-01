@@ -128,15 +128,17 @@
 
 	// 캔버스 이미지로 변경
 	function takepicture() {
+		const data=null;
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
+		data = canvas.toDataURL("image/png",1);
 		if(selectoption !="png"){
-			const data = canvas.toDataURL("image/jpeg",1);
+			data = canvas.toDataURL("image/jpeg",1);
 		}
 		else{
-			const data = canvas.toDataURL("image/png",1);
+			data = canvas.toDataURL("image/png",1);
 		}
 		downloadImage(data);
 	}
