@@ -115,7 +115,7 @@
 		"click",
 		(ev) => {
 			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
-				takepicture();
+				takepicture(selectoption);
 		  		ev.preventDefault();
 			}
 			else{
@@ -127,13 +127,12 @@
 	}
 
 	// 캔버스 이미지로 변경
-	function takepicture() {
+	function takepicture(selectoption) {
 		const data=null;
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		data = canvas.toDataURL("image/png",1);
 		if(selectoption !="png"){
 			data = canvas.toDataURL("image/jpeg",1);
 		}
