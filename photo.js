@@ -23,6 +23,7 @@
 	video = document.getElementById("video");
 	canvas = document.getElementById("canvas");
 	startbutton = document.getElementById("startbutton");
+	var selectoption=document.getElementById("type-option").options[document.getElementById("type-option").selectedIndex].value
 
 	// 와이드 렌즈 사용을 막는 코드
 	var cid = 0;
@@ -131,7 +132,12 @@
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		const data = canvas.toDataURL("image/png",1)//퀄리티를 조절하는 부분
+		if(selectoption !="png"){
+			const data = canvas.toDataURL("image/jpeg",1);
+		}
+		else{
+			const data = canvas.toDataURL("image/png",1);
+		}
 		downloadImage(data);
 	}
 
@@ -148,7 +154,7 @@
 	  +today.getMinutes().toString()
 	  +today.getSeconds().toString()
 	  +today.getMilliseconds().toString()
-	  +'.png';
+	  +(selectoption !="png") ? ".jpg" : ".png";
   
 	  a.href = data;
 	  a.download = filename;

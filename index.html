@@ -7,15 +7,19 @@
 	<script src="photo.js"></script>
 </head>
 <body>
-	<div id="header">
-		<p>
-			신분증을 박스에 맞춰 찍어주세요.
-		</p>
+	<div id="camera-header">
+		<select id="type-option">
+			<option value="png">png</option>
+            <option value="jpg">jpg</option>
+        </select>
 	</div>
 	<div class="contentarea">
 		<div class="camera">
 			<input type="range" hidden />
 			<video id="video" autoplay playsinline></video>
+			<div id="guide">
+				<p>신분증을 박스에 맞춰 찍어주세요</p>
+			</div>
 			<div id="guideline"></div>
 		  	<button id="startbutton">Take photo</button>
 		</div>
