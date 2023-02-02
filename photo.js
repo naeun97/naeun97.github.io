@@ -119,7 +119,7 @@
 	startbutton.addEventListener(
 		"click",
 		(ev) => {
-			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1920 && video.videoHeight == 1080)){
+			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
 				takepicture();
 		  		ev.preventDefault();
 			}
