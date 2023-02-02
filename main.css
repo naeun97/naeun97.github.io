@@ -12,7 +12,6 @@ html, body{
       top: 50px;
       left: 50%;
       z-index: 999;
-      color: white;
       text-align: center;
       transform: translate(-50%, -50%);
   }
@@ -25,8 +24,8 @@ html, body{
   }
 
 #type-option{  
-  width: 150px;
-  height: 70px
+  width: 275px;
+  height: 75px;
 }
 
 #guide{
