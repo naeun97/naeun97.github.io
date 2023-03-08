@@ -4,7 +4,7 @@
 	let canvas = null;
 	let startbutton = null;
 
-	function selectOption(){
+	function changeType(){
 		var select=document.getElementById("type-option");
 		var selectedValue = select.options[select.selectedIndex].value;
 		return selectedValue;
@@ -133,7 +133,7 @@
 
 	// 캔버스 이미지로 변경
 	function takepicture() {
-		var select=selectOption();
+		var select=changeType();
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
@@ -168,7 +168,6 @@
 	  else{
 		filename+=".png"
 	  }
-	
 	  a.href = data;
 	  a.download = filename;
 	  document.body.appendChild(a);

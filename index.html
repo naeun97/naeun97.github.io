@@ -2,20 +2,19 @@
 <html>
 <head>
 	<title>WebRTC:demo</title>
-	<meta charset='utf-8'>
+	<meta name="viewport" content="user-scalable=no" charset="utf-8">
 	<link rel="stylesheet" href="main.css" type="text/css" media="all">
 	<script src="photo.js"></script>
 </head>
 <body>
 	<div id="camera-header">
-		<select id="type-option" onchange="selectOption()">
+		<select id="type-option" aria-label="label for the select" onchange="changeType()">
 			<option value="png" selected>png</option>
             <option value="jpg">jpg</option>
         </select>
 	</div>
 	<div class="contentarea">
 		<div class="camera">
-			<input type="range" hidden />
 			<video id="video" autoplay playsinline></video>
 			<div id="guide">
 				<p>신분증을 박스에 맞춰 찍어주세요</p>
