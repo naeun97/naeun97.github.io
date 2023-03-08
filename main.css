@@ -61,8 +61,6 @@ html, body{
 }
 
 #guideline{
-  height:33%;
-  width: 90%;
   border: 0.5em solid white;
   border-radius: 3%;
   text-align: center;

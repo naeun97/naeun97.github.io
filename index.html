@@ -25,4 +25,12 @@
 		<canvas id="canvas"> </canvas>
 	  </div>
 </body>
+<script type="text/javascript">	
+// width=325px/ height=204px
+	var screenHeight = window.screen.height;
+	var screenWidth = window.screen.width;
+	var myDiv = document.getElementById("guideline");
+	myDiv.style.height = (204/screenHeight)*100 + "%";
+	myDiv.style.width = (325/screenWidth)*100 + "%";
+</script>
 </html>
