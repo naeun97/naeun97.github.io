@@ -68,8 +68,8 @@
 	var constraints = { 
 		video:true,
 		video: { 
-			width:{ideal:1920} , 
-			height:{ideal:1080} ,
+			width:1920 , 
+			height:1080 ,
 			focusMode: "continuous",
 			facingMode: { ideal: 'environment' } ,
 			deviceId: videoDevices[cid]
