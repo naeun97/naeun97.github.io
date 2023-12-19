@@ -114,7 +114,7 @@
 	startbutton.addEventListener(
 		"click",
 		(ev) => {
-			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
+			if((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
 				takepicture();
 		  		ev.preventDefault();
 			}
@@ -128,21 +128,19 @@
 
 	// 캔버스 이미지로 변경
 	function takepicture() {
-		var select=changeType();
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
 
 		const jpeg_data = canvas.toDataURL("image/jpeg",1);
-		const data = canvas.toDataURL("image/png",1);
-
-		downloadImage(jpeg_data,select);
-		downloadImage(data,select);	
+		downloadImage(jpeg_data,"jpeg");
+		const png_data = canvas.toDataURL("image/png",1);
+		downloadImage(png_data,"png");	
 	}
 
   	//이미지 다운
-  	function downloadImage(data,select) {
+  	function downloadImage(data,Extension) {
 	  var a = document.createElement('a');
 	  let today = new Date()
 	  
@@ -154,12 +152,9 @@
 	  +today.getMinutes().toString()
 	  +today.getSeconds().toString()
 	  +today.getMilliseconds().toString()
-	  if(select!="png"){
-		filename+=".jpg"
-	  }
-	  else{
-		filename+=".png"
-	  }
+
+	  filename += Extension
+
 	  a.href = data;
 	  a.download = filename;
 	  document.body.appendChild(a);
