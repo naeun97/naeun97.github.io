@@ -134,31 +134,34 @@
         context.drawImage(video, 0, 0);
 
 		const jpeg_data = canvas.toDataURL("image/jpeg",1);
-		downloadImage(jpeg_data,"jpeg");
+		downloadImage(jpeg_data,".jpeg",0);
+
 		const png_data = canvas.toDataURL("image/png",1);
-		downloadImage(png_data,"png");	
+		downloadImage(png_data,".png",1000);//1 초 딜레이	
 	}
 
   	//이미지 다운
-  	function downloadImage(data,Extension) {
-	  var a = document.createElement('a');
-	  let today = new Date()
+  	function downloadImage(data,format,delay=0) {
+		setTimeout(function(){
+			var a = document.createElement('a');
+			let today = new Date()
+			
+			let filename=today.getFullYear().toString()+
+			(today.getMonth()+1).toString()
+			+today.getDate().toString()
+			+'_'
+			+today.getHours().toString()
+			+today.getMinutes().toString()
+			+today.getSeconds().toString()
+			+today.getMilliseconds().toString()+
+			(format === "jpeg" ? ".jpg" : ".png");
 	  
-	  let filename=today.getFullYear().toString()+
-	  (today.getMonth()+1).toString()
-	  +today.getDate().toString()
-	  +'_'
-	  +today.getHours().toString()
-	  +today.getMinutes().toString()
-	  +today.getSeconds().toString()
-	  +today.getMilliseconds().toString()
-
-	  filename += Extension
-
-	  a.href = data;
-	  a.download = filename;
-	  document.body.appendChild(a);
-	  a.click();
-  }
+			a.href = data;
+			a.download = filename;
+			document.body.appendChild(a);
+			a.click();
+			
+		},delay);
+  	}
 	window.addEventListener("load", startup, false);
   })();
