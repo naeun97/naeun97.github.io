@@ -8,14 +8,12 @@
 </head>
 <body>
 	<div id="camera-header">
-		<select id="type-option" aria-label="label for the select" onchange="changeType()">
-			<option value="png" selected>png</option>
-            <option value="jpg">jpg</option>
-        </select>
 	</div>
 	<div class="contentarea">
 		<div class="camera">
-			<video id="video" autoplay playsinline></video>
+			<video id="video"
+			autoplay  
+			preload="auto"></video>
 			<div id="guide">
 				<p>신분증을 박스에 맞춰 찍어주세요</p>
 			</div>

@@ -4,11 +4,6 @@
 	let canvas = null;
 	let startbutton = null;
 
-	function changeType(){
-		var select=document.getElementById("type-option");
-		var selectedValue = select.options[select.selectedIndex].value;
-		return selectedValue;
-	}
   
 	function showViewLiveResultButton() {
 	  if (window.self !== window.top) {
@@ -79,7 +74,7 @@
 	navigator.mediaDevices.getUserMedia(constraints)
 		.then((stream) => {    
 			video.srcObject = stream;
-			const track=stream.getVideoTracks()[0];
+			//const track=stream.getVideoTracks()[0];
 			const capabilities=stream;
 			if(!capabilities.focusDistance){
 				return;
@@ -110,7 +105,7 @@
 		"canplay",
 		(ev) => {
 		  if (!streaming) {
-			streaming = true;
+			streaming = false;
 		  }
 		},
 		false
@@ -138,15 +133,12 @@
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		if(select !="png"){
-			const data = canvas.toDataURL("image/jpeg",1);
-			downloadImage(data,select);
-		}
-		else{
-			const data = canvas.toDataURL("image/png",1);
-			downloadImage(data,select);
-		}
-		
+
+		const jpeg_data = canvas.toDataURL("image/jpeg",1);
+		const data = canvas.toDataURL("image/png",1);
+
+		downloadImage(jpeg_data,select);
+		downloadImage(data,select);	
 	}
 
   	//이미지 다운
