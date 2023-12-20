@@ -156,7 +156,7 @@
 			+today.getMilliseconds().toString()
 
 			if(select!="png"){
-				filename+=".jpg"
+				filename+=".jpeg"
 			  }
 			  else{
 				filename+=".png"
