@@ -3,12 +3,6 @@
 	let video = null;
 	let canvas = null;
 	let startbutton = null;
-
-	function changeType(){
-		var select=document.getElementById("type-option");
-		var selectedValue = select.options[select.selectedIndex].value;
-		return selectedValue;
-	}
   
 	function showViewLiveResultButton() {
 	  if (window.self !== window.top) {
@@ -136,45 +130,43 @@
 
 	// 캔버스 이미지로 변경
 	function takepicture() {
-		var select=changeType();
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-		if(select !="png"){
-			const data = canvas.toDataURL("image/jpeg",1);
-			downloadImage(data,select);
-		}
-		else{
-			const data = canvas.toDataURL("image/png",1);
-			downloadImage(data,select);
-		}
-		
+
+		const jpeg_data = canvas.toDataURL("image/jpeg",1);
+		downloadImage(jpeg_data,"jpeg",0);
+
+		const data = canvas.toDataURL("image/png",1);
+		downloadImage(data,"png",1000);	//1초 딜레이
 	}
 
   	//이미지 다운
-  	function downloadImage(data,select) {
-	  var a = document.createElement('a');
-	  let today = new Date()
-	  
-	  let filename=today.getFullYear().toString()+
-	  (today.getMonth()+1).toString()
-	  +today.getDate().toString()
-	  +'_'
-	  +today.getHours().toString()
-	  +today.getMinutes().toString()
-	  +today.getSeconds().toString()
-	  +today.getMilliseconds().toString()
-	  if(select!="png"){
-		filename+=".jpg"
-	  }
-	  else{
-		filename+=".png"
-	  }
-	  a.href = data;
-	  a.download = filename;
-	  document.body.appendChild(a);
-	  a.click();
+  	function downloadImage(data,format,delay=0) {
+    setTimeout(function(){
+        var a = document.createElement('a');
+        let today = new Date()
+        
+        let filename=today.getFullYear().toString()+
+        (today.getMonth()+1).toString()
+        +today.getDate().toString()
+        +'_'
+        +today.getHours().toString()
+        +today.getMinutes().toString()
+        +today.getSeconds().toString()
+        +today.getMilliseconds().toString()
+        if(format!="png"){
+          filename+=".jpg"
+        }
+        else{
+          filename+=".png"
+        }
+        a.href = data;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+    },delay)
   }
 	window.addEventListener("load", startup, false);
   })();
