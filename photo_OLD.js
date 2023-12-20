@@ -14,6 +14,7 @@
 	  if (window.self !== window.top) {
 		document.querySelector(".contentarea").remove();
 		const button = document.createElement("button");
+		button.textContent = "View live result of the example code above";
 		document.body.append(button);
 		button.addEventListener("click", () => window.open(location.href));
 		return true;
@@ -28,7 +29,6 @@
 
 	video = document.getElementById("video");
 	canvas = document.getElementById("canvas");
-    photo = document.getElementById('photo');
 	startbutton = document.getElementById("startbutton");
 
 	// 와이드 렌즈 사용을 막는 코드
@@ -80,8 +80,6 @@
 	navigator.mediaDevices.getUserMedia(constraints)
 		.then((stream) => {    
 			video.srcObject = stream;
-            video.muted = true; // 비디오를 음소거합니다.
-            video.setAttribute("playsinline", ""); // iOS에서 자동 재생이 가능하게 설정
 			const track=stream.getVideoTracks()[0];
 			const capabilities=stream;
 			if(!capabilities.focusDistance){
