@@ -154,7 +154,7 @@
 			+today.getMinutes().toString()
 			+today.getSeconds().toString()
 			+today.getMilliseconds().toString()
-			
+
 			if(select!="png"){
 				filename+=".jpg"
 			  }
@@ -164,8 +164,15 @@
 	  
 			a.href = data;
 			a.download = filename;
-			document.body.appendChild(a);
 			a.click();
+			// Safari 일 경우 다른 방식으로 다운로드 실행
+			if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+				window.open(data);
+			} else {
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
+			}
 			
 		},delay);
   	}
