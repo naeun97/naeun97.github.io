@@ -7,46 +7,12 @@ html, body{
  
 #canvas{width: 0;height: 0;}
 
-#camera-header{
-      position: absolute;
-      top: 50px;
-      left: 50%;
-      z-index: 999;
-      text-align: center;
-      transform: translate(-50%, -50%);
-  }
-
 #camera,video{
   position: fixed;
   height: 93%;
   width: 100%;
   object-fit: cover;
   }
-
-#type-option{  
-  width: 275px;
-  height: 75px;
-
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-
-  font-size: 26pt;
-
-  text-align-last: center;
-  text-align: center;
-  -ms-text-align-last: center;
-  -moz-text-align-last: center;
-  
-  color: #444;
-  background-color: #fff;
-  
-  margin: 0;
-  
-  border: 1px solid #aaa;
-  border-radius: .5em;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-}
 
 #guide{
   color: white;

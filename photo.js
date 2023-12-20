@@ -74,7 +74,7 @@
 	navigator.mediaDevices.getUserMedia(constraints)
 		.then((stream) => {    
 			video.srcObject = stream;
-			//const track=stream.getVideoTracks()[0];
+			const track=stream.getVideoTracks()[0];
 			const capabilities=stream;
 			if(!capabilities.focusDistance){
 				return;
@@ -105,7 +105,7 @@
 		"canplay",
 		(ev) => {
 		  if (!streaming) {
-			streaming = false;
+			streaming = true;
 		  }
 		},
 		false
