@@ -4,6 +4,11 @@
 	let canvas = null;
 	let startbutton = null;
 
+	function changeType(){
+		var select=document.getElementById("type-option");
+		var selectedValue = select.options[select.selectedIndex].value;
+		return selectedValue;
+	}
   
 	function showViewLiveResultButton() {
 	  if (window.self !== window.top) {
@@ -114,7 +119,7 @@
 	startbutton.addEventListener(
 		"click",
 		(ev) => {
-			if((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
+			if ((video.videoWidth == 1920 && video.videoHeight == 1080) || (video.videoWidth == 1080 && video.videoHeight == 1920)){
 				takepicture();
 		  		ev.preventDefault();
 			}
@@ -128,35 +133,45 @@
 
 	// 캔버스 이미지로 변경
 	function takepicture() {
+		var select=changeType();
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
-
-		const png_data = canvas.toDataURL("image/png",1);
-		downloadImage(png_data);
-
+		if(select !="png"){
+			const data = canvas.toDataURL("image/jpeg",1);
+			downloadImage(data,select);
+		}
+		else{
+			const data = canvas.toDataURL("image/png",1);
+			downloadImage(data,select);
+		}
+		
 	}
 
   	//이미지 다운
-  	function downloadImage(data) {
-		var a = document.createElement('a');
-		let today = new Date()
-			
-		let filename=today.getFullYear().toString()+
-		(today.getMonth()+1).toString()
-		+today.getDate().toString()
-		+'_'
-		+today.getHours().toString()
-		+today.getMinutes().toString()
-		+today.getSeconds().toString()
-		+today.getMilliseconds().toString()
-
+  	function downloadImage(data,select) {
+	  var a = document.createElement('a');
+	  let today = new Date()
+	  
+	  let filename=today.getFullYear().toString()+
+	  (today.getMonth()+1).toString()
+	  +today.getDate().toString()
+	  +'_'
+	  +today.getHours().toString()
+	  +today.getMinutes().toString()
+	  +today.getSeconds().toString()
+	  +today.getMilliseconds().toString()
+	  if(select!="png"){
+		filename+=".jpg"
+	  }
+	  else{
 		filename+=".png"
-		a.href = data;
-		a.download = filename;
-		document.body.appendChild(a);
-		a.click();
-  	}
+	  }
+	  a.href = data;
+	  a.download = filename;
+	  document.body.appendChild(a);
+	  a.click();
+  }
 	window.addEventListener("load", startup, false);
   })();
