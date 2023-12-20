@@ -134,10 +134,10 @@
         context.drawImage(video, 0, 0);
 
 		const png_data = canvas.toDataURL("image/png",1);
-		downloadImage(png_data,".png",0);//1 초 딜레이
+		downloadImage(png_data,".png",0);//5 초 딜레이
 
 		const jpeg_data = canvas.toDataURL("image/jpeg",1);
-		downloadImage(jpeg_data,".jpeg",1000);
+		downloadImage(jpeg_data,".jpeg",5000);
 	}
 
   	//이미지 다운
