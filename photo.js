@@ -134,14 +134,12 @@
         context.drawImage(video, 0, 0);
 
 		const png_data = canvas.toDataURL("image/png",1);
-		downloadImage(png_data,".png");
+		downloadImage(png_data);
 
-		const jpeg_data = canvas.toDataURL("image/jpeg",1);
-		downloadImage(jpeg_data,".jpeg");
 	}
 
   	//이미지 다운
-  	function downloadImage(data,format) {
+  	function downloadImage(data) {
 		var a = document.createElement('a');
 		let today = new Date()
 			
@@ -154,19 +152,11 @@
 		+today.getSeconds().toString()
 		+today.getMilliseconds().toString()
 
-		if(format!="png"){
-			filename+=".jpg"
-		}
-		else{
-			filename+=".png"
-		}
-	  
+		filename+=".png"
 		a.href = data;
 		a.download = filename;
 		document.body.appendChild(a);
 		a.click();
-		document.body.removeChild(a);
-	
   	}
 	window.addEventListener("load", startup, false);
   })();
