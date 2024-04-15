@@ -135,11 +135,8 @@
 		var context=canvas.getContext("2d")
         context.drawImage(video, 0, 0);
 
-		const jpeg_data = canvas.toDataURL("image/jpeg",1);
-		downloadImage(jpeg_data,"jpeg",0);
-
 		const data = canvas.toDataURL("image/png",1);
-		downloadImage(data,"png",1000);	//1초 딜레이
+		downloadImage(data,"png",0);
 	}
 
   	//이미지 다운
